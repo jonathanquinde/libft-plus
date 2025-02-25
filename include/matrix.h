@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
+#ifndef MATRIX_H
+# define MATRIX_H
 typedef struct s_matrix
 {
 	char	**matrix;
@@ -22,3 +23,4 @@ typedef struct s_matrix
 
 void		matrix_print(t_matrix matrix);
 t_matrix	matrix_new(size_t height, size_t width);
+#endif

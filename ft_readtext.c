@@ -33,6 +33,7 @@ char    *ft_readtext(int fd)
         ft_lstclear(&text, free);
         return (NULL);
     }
+    buffer[(size_lst - 1) * BUFFER_SIZE + size_lastread] = '\0';
 	ft_rlist_to_str(text, buffer + (size_lst - 1) * BUFFER_SIZE);
 	ft_lstclear(&text, free);
 	return (buffer);

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.h                                             :+:      :+:    :+:   */
+/*   ft_arrstrclean.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquinde- < jquinde-@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jquinde- <jquinde-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 16:39:57 by jquinde-          #+#    #+#             */
-/*   Updated: 2025/02/25 16:39:57 by jquinde-         ###   ########.fr       */
+/*   Created: 2025/10/24 21:23:19 by jquinde-          #+#    #+#             */
+/*   Updated: 2025/10/24 21:37:53 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "libft.h"
 
-#ifndef FILE_H
-# define FILE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-void	ft_raw_rreadtext(int fd, t_list **head);
-char    *ft_readtext(int fd);
-t_list  *ft_rreadlines(int fd);
-#endif
+void	ft_arrstrclean(char ***arr_str, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free ((*arr_str)[i]);
+		i++;
+	}
+	free (*arr_str);
+	*arr_str = NULL;
+}

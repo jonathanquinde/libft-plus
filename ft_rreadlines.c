@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file.h"
-#include <stdio.h>
+#include "libft.h"
 
 void    text_to_lines(t_list **lines, char *text);
 

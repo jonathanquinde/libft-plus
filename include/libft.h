@@ -6,7 +6,7 @@
 /*   By: jquinde- < jquinde-@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:37:50 by jquinde-          #+#    #+#             */
-/*   Updated: 2025/10/24 21:23:31 by jquinde-         ###   ########.fr       */
+/*   Updated: 2025/10/25 10:23:57 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+#include <stdio.h>
 # include <stdlib.h> 
 # include <unistd.h>
 # include <fcntl.h>
@@ -29,7 +30,7 @@ typedef struct s_matrx
 	char	**data;
 	size_t	width;
 	size_t	height;
-}					t_matrx;
+}			t_matrx;
 
 /* General */
 int		ft_isalpha(int c);
@@ -40,7 +41,6 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_atoi(const char *ntpr);
-void	ft_arrstrclean(char ***arr_str, size_t len);
 
 /*  Strings */
 size_t	ft_strlen(const char *str);
@@ -51,7 +51,6 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
-int		ft_strendswith(char *str, const char *suffix);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(const char *s, char c);
@@ -59,6 +58,14 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+int		ft_strendswith(char *str, const char *suffix);
+ssize_t	ft_strlenuntil(char *str, int ch);
+int		ft_strcontains_ch(char *str, int ch);
+ssize_t	ft_strindexof(char *str, int ch);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strncpy(char *dst, char *src, size_t len);
+void	ft_strappend(char **str, char *value);
+void	ft_strclean(char **str);
 
 /* Memory */
 void	*ft_memset(void *s, int c, size_t n);
@@ -68,19 +75,37 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_arrstrclean(char ***arr_str, size_t len);
 
 
-/* I/O */
+/***   I/O   ***/
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
 # endif
+# define READ_SUCCESS 1
+# define READ_EMPTY 0
+# define READ_FAIL -1
+# define READ_FAIL_MALLOC -2
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-void	ft_raw_rreadtext(int fd, t_list **head);
-char    *ft_readtext(int fd);
-t_list  *ft_rreadlines(int fd);
+int		ft_raw_rreadtext(int fd, t_list **head);
+/***
+ * Reads all the file and copies it to the given buffer. Buffer doesn't need to be initilized.
+ * Returns a status code.
+ */
+int		ft_readtext(int fd, char **buffer);
+/***
+ * Reads all the file and copies it to the given list in reverse. Each node is a line without '\n'. Head doesn't need to be initilized.
+ * Returns a status code.
+ */
+int		ft_rreadlines(int fd, t_list **head);
+/***
+ * Reads all the file and copies it to the given list. Each node is a line without '\n'. Head doesn't need to be initilized.
+ * Returns a status code.
+ */
+int		ft_readlines(int fd, t_list **head);
 
 /* Lists */
 t_list	*ft_lstnew(void *content);
@@ -92,6 +117,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+///Same behaviour as ft_lstnew. In case of node allocation fail frees content
 t_list	*ft_lstnew_s(void *content);
 void    ft_lstreverse(t_list **lst);
 

@@ -57,6 +57,7 @@ char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strncpy(char *dst, char *src, size_t len);
 void	ft_strappend(char **str, char *value);
 void	ft_strclean(char **str);
+int		ft_strcontains_str(char *str, char *set);
 
 
 /* Memory */

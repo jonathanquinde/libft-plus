@@ -12,43 +12,44 @@
 
 #include "libft.h"
 
-t_queue queue_new (void)
+t_queue	*ft_queuenew (void)
 {
-    t_queue queue;
+	t_queue	*queue;
 
-    queue.head = NULL;
-    queue.tail = NULL;
-    return (queue);
+	queue = malloc(sizeof(t_queue));
+	queue->head = NULL;
+	queue->tail = NULL;
+	return (queue);
 }
 
-int queue_empty (t_queue queue)
+bool	ft_queueisempty (t_queue *queue)
 {
-    return (queue.head == NULL);
+	return (queue->head == NULL);
 }
 
-void queue_put (t_queue *queue, void *x)
+void	ft_queueput (t_queue *queue, void *x)
 {
-    t_list  *new_node;
+	t_list  *new_node;
 
-    new_node = ft_lstnew(x);
-    if (new_node == NULL)
-        return ;
-    if (queue->head == NULL)
-    {
-        queue->head = new_node;
-        queue->tail = new_node;
-    }
-    else
-    {
-        queue->tail->next = new_node;
-        queue->tail = queue->tail->next;
-    }
+	new_node = ft_lstnew(x);
+	if (new_node == NULL)
+		return ;
+	if (queue->head == NULL)
+	{
+		queue->head = new_node;
+		queue->tail = new_node;
+	}
+	else
+	{
+		queue->tail->next = new_node;
+		queue->tail = queue->tail->next;
+	}
 }
 
-void *queue_get (t_queue *queue)
+void	*ft_queueget (t_queue *queue)
 {
-    t_list	*node;
-    void	*element;	
+	t_list	*node;
+	void	*element;	
 
 	node = queue->head;
 	element = node->content;
@@ -57,8 +58,9 @@ void *queue_get (t_queue *queue)
 	return (element);
 }
 
-void queue_free (t_queue *queue)
+void ft_queueclean (t_queue *queue)
 {
 	ft_lstclear(&queue->head, free);
 	queue->tail = NULL;
+	free (queue);
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	matrix_print(t_matrx matrix)
+void	ft_matrixprint(t_matrx matrix)
 {
 	size_t	i;
 	size_t	j;

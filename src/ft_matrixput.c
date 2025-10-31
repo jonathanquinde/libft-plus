@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrixclean.c                                   :+:      :+:    :+:   */
+/*   ft_matrixput.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquinde- <jquinde-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 12:04:28 by jquinde-          #+#    #+#             */
-/*   Updated: 2025/10/27 12:05:47 by jquinde-         ###   ########.fr       */
+/*   Created: 2025/10/30 01:12:17 by jquinde-          #+#    #+#             */
+/*   Updated: 2025/10/30 01:22:48 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_matrixclean(t_matrx *matrix)
+void	ft_matrixput(t_matrx matrix, size_t i, size_t j, char ch)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < matrix->height)
-	{
-		free (matrix->data[i]);
-		i++;
-	}
-	free (matrix->data);
-	matrix->data = NULL;
+	matrix.data[i][j] = ch;
 }

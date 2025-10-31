@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrixclean.c                                   :+:      :+:    :+:   */
+/*   ft_matrixget.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquinde- <jquinde-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 12:04:28 by jquinde-          #+#    #+#             */
-/*   Updated: 2025/10/27 12:05:47 by jquinde-         ###   ########.fr       */
+/*   Created: 2025/10/30 01:08:01 by jquinde-          #+#    #+#             */
+/*   Updated: 2025/10/30 01:11:50 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_matrixclean(t_matrx *matrix)
+char	ft_matrixget(t_matrx matrix, size_t i, size_t j)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < matrix->height)
-	{
-		free (matrix->data[i]);
-		i++;
-	}
-	free (matrix->data);
-	matrix->data = NULL;
+	return matrix.data[i][j];
 }

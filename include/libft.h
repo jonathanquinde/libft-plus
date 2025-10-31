@@ -6,7 +6,7 @@
 /*   By: jquinde- < jquinde-@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:37:50 by jquinde-          #+#    #+#             */
-/*   Updated: 2025/10/27 12:06:34 by jquinde-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:11:03 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h> 
 # include <unistd.h>
@@ -133,9 +134,11 @@ typedef struct s_matrx
 	size_t	height;
 }			t_matrx;
 
-t_matrx matrix_new(size_t height, size_t width);
-void    matrix_print(t_matrx matrix);
-void	matrix_clean(t_matrx *matrix);
+t_matrx	ft_matrixinit(size_t height, size_t width);
+void	ft_matrixclean(t_matrx *matrix);
+char	ft_matrixget(t_matrx matrix, size_t i, size_t j);
+void	ft_matrixput(t_matrx matrix, size_t i, size_t j, char ch);
+void	ft_matrixprint(t_matrx matrix);
 
 
 /***  Queue  ***/
@@ -147,10 +150,10 @@ typedef struct s_queue
 }				t_queue;
 
 
-t_queue queue_new (void);
-int queue_empty (t_queue queue);
-void queue_put (t_queue *queue, void *x);
-void *queue_get (t_queue *stk);
-void queue_free (t_queue *queue);
+t_queue	*ft_queuenew(void);
+bool	ft_queueisempty(t_queue *queue);
+void	ft_queueput(t_queue *queue, void *x);
+void	*ft_queueget(t_queue *queue);
+void	ft_queueclean(t_queue *queue);
 
 #endif

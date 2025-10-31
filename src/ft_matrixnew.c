@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_matrx matrix_new(size_t height, size_t width)
+t_matrx ft_matrixinit(size_t height, size_t width)
 {
 	size_t  i;
 	t_matrx t;

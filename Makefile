@@ -22,7 +22,8 @@ SRC = src/ft_atoi.c src/ft_bzero.c src/ft_calloc.c \
       src/ft_lstreverse.c src/ft_matrixnew.c src/ft_matrixprint.c \
       src/ft_raw_rreadtext.c src/ft_readtext.c src/ft_rreadlines.c \
       src/ft_readlines.c src/ft_queue.c src/ft_matrixclean.c \
-	  src/ft_strcontains_str.c src/ft_matrixput.c src/ft_matrixget.c
+	  src/ft_strcontains_str.c src/ft_matrixput.c src/ft_matrixget.c \
+	  src/ft_strall.c src/ft_strany.c src/ft_strcontainsonly_str.c
 
 OBJ = $(SRC:.c=.o)
 

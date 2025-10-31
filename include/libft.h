@@ -6,7 +6,7 @@
 /*   By: jquinde- < jquinde-@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:37:50 by jquinde-          #+#    #+#             */
-/*   Updated: 2025/10/30 01:11:03 by jquinde-         ###   ########.fr       */
+/*   Updated: 2025/10/31 19:28:00 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ char	*ft_strncpy(char *dst, char *src, size_t len);
 void	ft_strappend(char **str, char *value);
 void	ft_strclean(char **str);
 int		ft_strcontains_str(char *str, char *set);
+int		ft_strcontainsonly_str(char *str, char *set);
+bool	ft_strall(char *str, bool(*predicate)(int));
+bool	ft_strany(char *str, bool (*pred)(int));
 
 
 /* Memory */

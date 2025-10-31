@@ -16,14 +16,8 @@ int	ft_strcontainsonly_str(char *str, char *set)
 {
 	while (*str)
 	{
-		while (*set)
-		{
-			if (*str != *set)
-				return (0);
-			else if (*str == *set)
-				break ;
-			set++;
-		}
+		if (ft_strcontains_ch(set, *str) == false)
+			return (false);
 		str++;
 	}
 	return (1);
